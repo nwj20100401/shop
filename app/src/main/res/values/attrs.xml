@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义ToolBar的样式-->
+    <declare-styleable name="CNiaoToolBar">
+        <!--搜索界面右边按钮的图标-->
+        <attr name="rightButtonIcon" format="reference" />
+        <!--判断是否显示搜索视图-->
+        <attr name="isShowSearchView" format="boolean" />
+        <!--搜索视图右边按钮的文本-->
+        <attr name="rightButtonText" format="string" />
+    </declare-styleable>
+
+    <!--自定义对话框的样式-->
+    <declare-styleable name="Dialog">
+        <attr name="DialogTitleAppearance" format="reference" />
+        <attr name="DialogTitleText" format="reference|string" />
+        <attr name="DialogSpotColor" format="reference|color" />
+        <attr name="DialogSpotCount" format="integer" />
+    </declare-styleable>
+</resources>

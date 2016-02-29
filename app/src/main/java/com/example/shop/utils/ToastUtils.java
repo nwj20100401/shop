@@ -4,7 +4,16 @@ import android.content.Context;
 import android.widget.Toast;
 
 /**
- * ToastUtils
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：吐司工具类
+ * 创建人：sony
+ * 创建时间：2016/2/27 12:14
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
 public class ToastUtils {
 

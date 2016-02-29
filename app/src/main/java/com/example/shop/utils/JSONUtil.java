@@ -1,9 +1,3 @@
-/*
-*JSONUtil.java
-*Created on 2014-9-29 上午9:54 by Ivan
-*Copyright(c)2014 Guangzhou Onion Information Technology Co., Ltd.
-*http://www.cniao5.com
-*/
 package com.example.shop.utils;
 
 import com.google.gson.Gson;
@@ -12,9 +6,17 @@ import com.google.gson.GsonBuilder;
 import java.lang.reflect.Type;
 
 /**
- * Created by Ivan on 14-9-29.
- * Copyright(c)2014 Guangzhou Onion Information Technology Co., Ltd.
- * http://www.cniao5.com
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：Json数据解析工具类
+ * 功能描述:解析json数据
+ * 创建人：sony
+ * 创建时间：2016/2/27 12:14
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
 public class JSONUtil {
 
@@ -25,18 +27,15 @@ public class JSONUtil {
         return gson;
     }
 
-
     public static <T> T fromJson(String json, Class<T> clz) {
 
         return gson.fromJson(json, clz);
     }
 
-
     public static <T> T fromJson(String json, Type type) {
 
         return gson.fromJson(json, type);
     }
-
 
     public static String toJSON(Object object) {
 

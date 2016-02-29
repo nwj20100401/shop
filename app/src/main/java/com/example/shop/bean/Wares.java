@@ -3,16 +3,29 @@ package com.example.shop.bean;
 import java.io.Serializable;
 
 /**
- * Created by <a href="http://www.cniao5.com">菜鸟窝</a>
- * 一个专业的Android开发在线教育平台
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：商品信息实体类
+ * 功能描述:保存商品信息
+ * 创建人：sony
+ * 创建时间：2016/2/27 11:28
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
 public class Wares implements Serializable {
 
-
+    //商品id
     private Long id;
+    //商品名臣
     private String name;
+    //商品图片地址
     private String imgUrl;
+    //商品描述
     private String description;
+    //商品价格
     private Float price;
 
 

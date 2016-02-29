@@ -9,12 +9,14 @@
     app:cardCornerRadius="4dp"
     app:contentPadding="10dp">
 
+    <!--热门活动右边的布局-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--热门活动的标题-->
         <TextView
             android:id="@+id/text_title"
             android:layout_width="match_parent"
@@ -34,7 +36,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-
+            <!--左侧图片布局，上下两个图片-->
             <LinearLayout
                 android:id="@+id/layout_left"
                 android:layout_width="wrap_content"
@@ -46,6 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
+                <!--水平直线-->
                 <View
                     android:id="@+id/line2"
                     style="@style/line_vertical" />
@@ -56,6 +59,7 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
+            <!--垂直显现-->
             <View
                 android:id="@+id/line"
                 style="@style/line_horizontal"

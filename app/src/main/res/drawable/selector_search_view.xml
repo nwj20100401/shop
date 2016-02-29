@@ -3,19 +3,23 @@
 <!--自定义ToolBar背景样式-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--形状-->
+    <!--ToolBar不可用时背景样式-->
     <item android:state_enabled="false">
+        <!--形状-->
         <shape android:shape="rectangle">
+            <!--角的弧度-->
             <corners android:radius="8dp" />
             <solid android:color="#eb4f38" />
         </shape>
     </item>
+    <!--ToolBar按下时背景样式-->
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
             <corners android:radius="8dp" />
             <solid android:color="#eb4f38" />
         </shape>
     </item>
+    <!--ToolBar正常时背景样式-->
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="8dp" />

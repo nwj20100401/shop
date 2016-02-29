@@ -90,18 +90,21 @@ public class HomeFragment extends BaseFragment {
     }
 
 
+    /**
+     * 获取图片
+     */
     private void requestImages() {
 
         String url = "http://112.124.22.238:8081/course_api/banner/query?type=1";
 
-
+        //网络请求
         httpHelper.get(url, new SpotsCallBack<List<Banner>>(getContext()) {
-
 
             @Override
             public void onSuccess(Response response, List<Banner> banners) {
-
+                //获取的图片列表
                 mBanner = banners;
+                //开源项目，实现图片轮播
                 initSlider();
             }
 
@@ -110,13 +113,13 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
-
-
     }
 
 
+    /**
+     * 初始化列表
+     */
     private void initRecyclerView() {
-
 
         httpHelper.get(Contants.API.CAMPAIGN_HOME, new BaseCallback<List<HomeCampaign>>() {
             @Override
@@ -137,6 +140,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onSuccess(Response response, List<HomeCampaign> homeCampaigns) {
 
+                //初始化动态模块数据
                 initData(homeCampaigns);
             }
 
@@ -146,26 +150,29 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
-
     }
 
-
+    /**
+     * 初始化动态模块数据
+     *
+     * @param homeCampaigns
+     */
     private void initData(List<HomeCampaign> homeCampaigns) {
 
-
+        //初始化分类列表
         mAdatper = new HomeCatgoryAdapter(homeCampaigns, getActivity());
 
+        //注册动态模块的监听事件
         mAdatper.setOnCampaignClickListener(new HomeCatgoryAdapter.OnCampaignClickListener() {
             @Override
             public void onClick(View view, Campaign campaign) {
 
-
+                //跳转到商品列表activity
                 Intent intent = new Intent(getActivity(), WareListActivity.class);
+                //传递点击的动态模块
                 intent.putExtra(Contants.COMPAINGAIN_ID, campaign.getId());
-
+                //启动activity
                 startActivity(intent);
-
-
             }
         });
 
@@ -177,34 +184,31 @@ public class HomeFragment extends BaseFragment {
     }
 
 
+    /**
+     * 初始化slideLayout
+     */
     private void initSlider() {
-
 
         if (mBanner != null) {
 
             for (Banner banner : mBanner) {
-
-
                 TextSliderView textSliderView = new TextSliderView(this.getActivity());
                 textSliderView.image(banner.getImgUrl());
                 textSliderView.description(banner.getName());
                 textSliderView.setScaleType(BaseSliderView.ScaleType.Fit);
                 mSliderLayout.addSlider(textSliderView);
-
             }
         }
 
-
         mSliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-
         mSliderLayout.setCustomAnimation(new DescriptionAnimation());
         mSliderLayout.setPresetTransformer(SliderLayout.Transformer.RotateUp);
         mSliderLayout.setDuration(3000);
-
-
     }
 
-
+    /**
+     * 退出主页Fragment，释放内存资源
+     */
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-
+    android:background="@drawable/selector_number_add_sub"
     android:gravity="center_horizontal"
-    android:background="@drawable/selector_number_add_sub">
+    android:orientation="horizontal">
 
+    <!--自定义添加减少商品数量控件-->
 
-
+    <!--减少商品数量按钮-->
     <Button
         android:id="@+id/btn_sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_btn_style_white"
-        android:textColor="@color/black"
-        android:text="-"/>
+        android:text="-"
+        android:textColor="@color/black" />
 
+    <!--商品数量显示-->
     <TextView
         android:id="@+id/etxt_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:gravity="center"
         android:minWidth="100dp"
 
-        android:gravity="center"/>
+        android:textColor="@color/black" />
 
+    <!--添加商品数量按钮-->
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_btn_style_white"
-        android:textColor="@color/black"
-        android:text="+"/>
-
-
+        android:text="+"
+        android:textColor="@color/black" />
 
 </LinearLayout>

@@ -3,15 +3,24 @@ package com.example.shop.bean;
 import java.io.Serializable;
 
 /**
- * Created by <a href="http://www.cniao5.com">菜鸟窝</a>
- * 一个专业的Android开发在线教育平台
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：购物车商品信息实体类
+ * 功能描述:保存购物车中商品的信息
+ * 创建人：sony
+ * 创建时间：2016/2/27 11:30
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
-public class ShoppingCart extends Wares implements Serializable {
+public class ShoppingCart extends Wares {
 
-
+    //商品数量
     private int count;
-    private boolean isChecked=true;
-
+    //商品是否被选中
+    private boolean isChecked = true;
 
 
     public int getCount() {
@@ -29,9 +38,4 @@ public class ShoppingCart extends Wares implements Serializable {
     public void setIsChecked(boolean isChecked) {
         this.isChecked = isChecked;
     }
-
-
-
-
-
 }

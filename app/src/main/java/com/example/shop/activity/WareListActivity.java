@@ -28,21 +28,27 @@ import java.util.List;
 
 
 /**
- * Created by <a href="http://www.cniao5.com">菜鸟窝</a>
- * 一个专业的Android开发在线教育平台
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：商品列表信息activity，点击首页动态模块跳转过来
+ * 创建人：sony
+ * 创建时间：2016/2/27 12:14
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
-public class WareListActivity extends AppCompatActivity  implements Pager.OnPageListener<Wares>,TabLayout.OnTabSelectedListener,View.OnClickListener {
+public class WareListActivity extends AppCompatActivity implements Pager.OnPageListener<Wares>, TabLayout.OnTabSelectedListener, View.OnClickListener {
 
     private static final String TAG = "WareListActivity";
 
-    public static final int TAG_DEFAULT=0;
-    public static final int TAG_SALE=1;
-    public static final int TAG_PRICE=2;
+    public static final int TAG_DEFAULT = 0;
+    public static final int TAG_SALE = 1;
+    public static final int TAG_PRICE = 2;
 
-    public static final int ACTION_LIST=1;
-    public static final int ACTION_GIRD=2;
-
-
+    public static final int ACTION_LIST = 1;
+    public static final int ACTION_GIRD = 2;
 
 
     @ViewInject(R.id.tab_layout)
@@ -69,8 +75,7 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
     private HWAdatper mWaresAdapter;
 
 
-    private   Pager pager;
-
+    private Pager pager;
 
 
     @Override
@@ -82,7 +87,7 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
 
         initToolBar();
 
-        campaignId=getIntent().getLongExtra(Contants.COMPAINGAIN_ID,0);
+        campaignId = getIntent().getLongExtra(Contants.COMPAINGAIN_ID, 0);
 
         initTab();
 
@@ -92,7 +97,7 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
     }
 
 
-    private void initToolBar(){
+    private void initToolBar() {
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,41 +117,40 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
     }
 
 
-    private void getData(){
+    private void getData() {
 
 
-       pager= Pager.newBuilder().setUrl(Contants.API.WARES_CAMPAIN_LIST)
-                .putParam("campaignId",campaignId)
-                .putParam("orderBy",orderBy)
+        pager = Pager.newBuilder().setUrl(Contants.API.WARES_CAMPAIN_LIST)
+                .putParam("campaignId", campaignId)
+                .putParam("orderBy", orderBy)
                 .setRefreshLayout(mRefreshLayout)
                 .setLoadMore(true)
                 .setOnPageListener(this)
-                .build(this,new TypeToken<Page<Wares>>(){}.getType());
+                .build(this, new TypeToken<Page<Wares>>() {
+                }.getType());
 
         pager.request();
 
     }
 
 
+    private void initTab() {
 
-    private void initTab(){
 
-
-       TabLayout.Tab tab= mTablayout.newTab();
+        TabLayout.Tab tab = mTablayout.newTab();
         tab.setText("默认");
         tab.setTag(TAG_DEFAULT);
 
         mTablayout.addTab(tab);
 
 
-
-        tab= mTablayout.newTab();
+        tab = mTablayout.newTab();
         tab.setText("价格");
         tab.setTag(TAG_PRICE);
 
         mTablayout.addTab(tab);
 
-        tab= mTablayout.newTab();
+        tab = mTablayout.newTab();
         tab.setText("销量");
         tab.setTag(TAG_SALE);
 
@@ -162,7 +166,7 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
     @Override
     public void load(List<Wares> datas, int totalPage, int totalCount) {
 
-        mTxtSummary.setText("共有"+totalCount+"件商品");
+        mTxtSummary.setText("共有" + totalCount + "件商品");
 
         if (mWaresAdapter == null) {
             mWaresAdapter = new HWAdatper(this, datas);
@@ -173,13 +177,13 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
 
                     Intent intent = new Intent(WareListActivity.this, WareDetailActivity.class);
 
-                    intent.putExtra(Contants.WARE,wares);
+                    intent.putExtra(Contants.WARE, wares);
                     startActivity(intent);
                 }
             });
             mRecyclerview_wares.setAdapter(mWaresAdapter);
             mRecyclerview_wares.setLayoutManager(new LinearLayoutManager(this));
-            mRecyclerview_wares.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));
+            mRecyclerview_wares.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
             mRecyclerview_wares.setItemAnimator(new DefaultItemAnimator());
         } else {
             mWaresAdapter.refreshData(datas);
@@ -204,7 +208,7 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
     public void onTabSelected(TabLayout.Tab tab) {
 
         orderBy = (int) tab.getTag();
-        pager.putParam("orderBy",orderBy);
+        pager.putParam("orderBy", orderBy);
         pager.request();
     }
 
@@ -223,7 +227,7 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
 
         int action = (int) v.getTag();
 
-        if(ACTION_LIST == action){
+        if (ACTION_LIST == action) {
 
             mToolbar.setRightButtonIcon(R.drawable.icon_list_32);
             mToolbar.getRightButton().setTag(ACTION_GIRD);
@@ -231,10 +235,9 @@ public class WareListActivity extends AppCompatActivity  implements Pager.OnPage
             mWaresAdapter.resetLayout(R.layout.template_grid_wares);
 
 
-           mRecyclerview_wares.setLayoutManager(new GridLayoutManager(this,2));
+            mRecyclerview_wares.setLayoutManager(new GridLayoutManager(this, 2));
 
-        }
-        else if(ACTION_GIRD == action){
+        } else if (ACTION_GIRD == action) {
 
 
             mToolbar.setRightButtonIcon(R.drawable.icon_grid_32);

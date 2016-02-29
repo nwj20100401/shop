@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.example.shop.R;
 import com.example.shop.activity.Contants;
 import com.example.shop.activity.WareDetailActivity;
 import com.example.shop.adapter.BaseAdapter;
@@ -20,7 +25,9 @@ import com.example.shop.adapter.WaresAdapter;
 import com.example.shop.adapter.decoration.DividerItemDecoration;
 import com.example.shop.bean.Banner;
 import com.example.shop.bean.Category;
+import com.example.shop.bean.Page;
 import com.example.shop.bean.Wares;
+import com.example.shop.http.BaseCallback;
 import com.example.shop.http.OkHttpHelper;
 import com.example.shop.http.SpotsCallBack;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -29,13 +36,23 @@ import com.squareup.okhttp.Response;
 
 import java.util.List;
 
-
+/**
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：商品分类activity
+ * 创建人：sony
+ * 创建时间：2016/2/27 12:14
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
+ */
 public class CategoryFragment extends BaseFragment {
 
 
     @ViewInject(R.id.recyclerview_category)
     private RecyclerView mRecyclerView;
-
 
     @ViewInject(R.id.recyclerview_wares)
     private RecyclerView mRecyclerviewWares;

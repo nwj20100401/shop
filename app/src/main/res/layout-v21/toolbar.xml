@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <!--自定义ToolBar布局-->
+
+    <!--输入框-->
+    <EditText
+        android:id="@+id/toolbar_searchview"
+        style="@style/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:drawableLeft="@mipmap/icon_search"
+        android:gravity="center"
+        android:hint="请输入搜索内容"
+
+        android:visibility="gone" />
+
+    <!--文本-->
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <!--按钮-->
+    <Button
+        android:id="@+id/toolbar_rightButton"
+        style="@android:style/Widget.Material.Toolbar.Button.Navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+</RelativeLayout>

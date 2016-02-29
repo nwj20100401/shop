@@ -1,107 +1,139 @@
 <resources>
-
-    <!-- Base application theme. -->
+    <!-- 基础应用主题样式 -->
     <style name="AppTheme" parent="Theme.AppCompat">
         <!-- Customize your theme here. -->
-
+        <!--应用主要颜色-->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <!--手机标题栏颜色-->
         <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <!--应用文本主要颜色-->
         <item name="android:textColorPrimary">@color/white</item>
         <!-- 窗口的背景颜色 -->
         <item name="android:windowBackground">@android:color/white</item>
-
+        <!--ActionBar默认没有-->
         <item name="android:windowActionBar">false</item>
+        <!--应用默认没有标题栏-->
         <item name="android:windowNoTitle">true</item>
-
+        <!--应用全屏-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-
     </style>
+
 
     <!--ToolBar搜索样式-->
     <style name="search_view">
+        <!--ToolBar文字大小-->
         <item name="android:textSize">18sp</item>
+        <!--ToolBar文字颜色-->
         <item name="android:textColor">@color/white</item>
+        <!--ToolBar提示文字颜色-->
         <item name="android:textColorHint">@color/white</item>
-
+        <!--ToolBar背景图片-->
         <item name="android:background">@drawable/selector_search_view</item>
+        <!--设置内边距，margin是外边距-->
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingBottom">6dp</item>
         <item name="android:paddingLeft">4dp</item>
 
+        <!--设置里面文本单行显示，如果为false，文本自动换行-->
         <item name="android:singleLine">true</item>
     </style>
 
 
+    <!--设置线条的样式-->
     <style name="line">
+        <!--默认背景色为白色-->
         <item name="android:background">@color/bg_color</item>
     </style>
 
+    <!--水平直线线的样式-->
     <style name="line_vertical" parent="line">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
-
-
     </style>
 
+    <!--垂直直线线的样式-->
     <style name="line_horizontal" parent="line">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">fill_parent</item>
 
         <item name="android:layout_gravity">center_horizontal</item>
-
     </style>
 
-
+    <!--自定义大按钮样式-->
     <style name="bigButton">
+        <!--设置按钮中文本的大小-->
         <item name="android:textSize">@dimen/bigButtonTextSize</item>
+        <!--设置按钮中文本的颜色-->
         <item name="android:textColor">@color/white_color_selector</item>
+        <!--设置按钮的位置-->
         <item name="android:gravity">center</item>
+        <!--设置按钮的左内边距-->
         <item name="android:paddingLeft">@dimen/largePadding</item>
-        <item name="android:paddingRight">@dimen/largePadding</item>
+        <!--设置按钮的右内边距-->
+        <item name="android:paddingRight">@dimen/largerPadding</item>
+
+        <!--设置按钮的宽度-->
         <item name="android:layout_width">fill_parent</item>
+        <!--设置按钮的高度-->
         <item name="android:layout_height">wrap_content</item>
+        <!--设置按钮的最小高度为正常按钮的高度-->
         <item name="android:minHeight">@dimen/normalButtonHeight</item>
     </style>
 
-
+    <!--自定义小按钮样式-->
     <style name="smallButton">
+        <!--设置小按钮中文字的大小-->
         <item name="android:textSize">@dimen/smallButtonTextSize</item>
+        <!--设置小按钮中文字的颜色-->
         <item name="android:textColor">@color/white_color_selector</item>
+        <!--设置小按钮的位置-->
         <item name="android:gravity">center</item>
+        <!--设置小按钮的左内边距-->
         <item name="android:paddingLeft">@dimen/smallPadding</item>
+        <!--设置小按钮的右内边距-->
         <item name="android:paddingRight">@dimen/smallPadding</item>
+        <!--设置小按钮的宽度-->
         <item name="android:layout_width">wrap_content</item>
+        <!--设置小按钮的高度-->
         <item name="android:layout_height">wrap_content</item>
+        <!--设置小按钮的最小宽度-->
         <item name="android:minWidth">@dimen/smallButtonWidth</item>
+        <!--设置小按钮的最小高度-->
         <item name="android:minHeight">@dimen/smallButtonHeight</item>
     </style>
 
 
+    <!--自定义小绿色按钮样式-->
     <style name="smallGreenButton" parent="@style/smallButton">
         <item name="android:background">@drawable/bg_btn_style_green</item>
     </style>
 
+    <!--自定义小灰色按钮样式-->
     <style name="smallGreyButton" parent="@style/smallButton">
         <item name="android:textColor">@color/grey_btn_text_color</item>
         <item name="android:background">@drawable/bg_btn_style_grey</item>
     </style>
 
+    <!--自定义小红色按钮样式-->
     <style name="smallRedButton" parent="@style/smallButton">
         <item name="android:background">@drawable/bg_btn_style_red</item>
     </style>
 
-
+    <!--自定义大绿色按钮样式-->
     <style name="bigGreenButton" parent="@style/bigButton">
         <item name="android:background">@drawable/bg_btn_style_green</item>
     </style>
 
 
+    <!--自定义大红色按钮样式-->
     <style name="bigRedButton" parent="@style/bigButton">
         <item name="android:background">@drawable/bg_btn_style_red</item>
     </style>
 
+    <!--自定义大灰色按钮样式-->
     <style name="bigGreyButton" parent="@style/bigButton">
+        <!---->
         <item name="android:textColor">@color/grey_btn_text_color</item>
         <item name="android:background">@drawable/bg_btn_style_grey</item>
     </style>
@@ -129,16 +161,21 @@
         <item name="textAllCaps">true</item>
     </style>
 
-
+    <!--商品标题样式-->
     <style name="ware_title">
-
+        <!--设置文字颜色-->
         <item name="android:textColor">@color/gray</item>
+        <!--设置文字大小-->
         <item name="android:textSize">20sp</item>
+        <!--设置多行显示-->
         <item name="android:maxLines">3</item>
     </style>
 
+    <!--商品价格样式-->
     <style name="ware_price">
+        <!--设置文字颜色-->
         <item name="android:textColor">@color/crimson</item>
+        <!--设置文字大小-->
         <item name="android:textSize">22sp</item>
 
     </style>

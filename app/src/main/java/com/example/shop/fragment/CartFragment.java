@@ -21,32 +21,52 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import java.util.List;
 
+/**
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：购物车activity
+ * 功能描述:实现购物车功能
+ * 创建人：sony
+ * 创建时间：2016/2/27 11:23
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
+ */
 
 public class CartFragment extends BaseFragment implements View.OnClickListener {
 
+    //编辑
     public static final int ACTION_EDIT = 1;
+    //全选
     public static final int ACTION_CAMPLATE = 2;
 
-
+    //定义商品列表
     @ViewInject(R.id.recycler_view)
     private RecyclerView mRecyclerView;
 
+    //定义全选按钮
     @ViewInject(R.id.checkbox_all)
     private CheckBox mCheckBox;
 
+    //定义商品总价文本
     @ViewInject(R.id.txt_total)
     private TextView mTextTotal;
 
+    //定义结算按钮
     @ViewInject(R.id.btn_order)
     private Button mBtnOrder;
 
+    //定义删除按钮
     @ViewInject(R.id.btn_del)
     private Button mBtnDel;
 
+    //定义ToolBar
     @ViewInject(R.id.toolbar)
     protected CNiaoToolBar mToolbar;
 
-
+    //定义购物车适配器
     private CartAdapter mAdapter;
     private CartProvider cartProvider;
 

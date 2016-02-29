@@ -18,17 +18,23 @@ import java.util.Map;
 
 
 /**
- * Created by <a href="http://www.cniao5.com">菜鸟窝</a>
- * 一个专业的Android开发在线教育平台
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：分页信息实体类
+ * 功能描述:数据信息分页
+ * 创建人：sony
+ * 创建时间：2016/2/27 12:14
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
 public class Pager {
 
-
     private static Builder builder;
 
-
     private OkHttpHelper httpHelper;
-
 
     private static final int STATE_NORMAL = 0;
     private static final int STATE_REFREH = 1;
@@ -36,12 +42,10 @@ public class Pager {
 
     private int state = STATE_NORMAL;
 
-
     private Pager() {
 
         httpHelper = OkHttpHelper.getInstance();
         initRefreshLayout();
-
     }
 
 
@@ -59,12 +63,10 @@ public class Pager {
 
     public void putParam(String key, Object value) {
         builder.params.put(key, value);
-
     }
 
 
     private void initRefreshLayout() {
-
 
         builder.mRefreshLayout.setLoadMore(builder.canLoadMore);
 
@@ -74,7 +76,6 @@ public class Pager {
                 builder.mRefreshLayout.setLoadMore(builder.canLoadMore);
                 refresh();
             }
-
 
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
@@ -95,18 +96,15 @@ public class Pager {
      */
     private void requestData() {
 
-
         String url = buildUrl();
 
         httpHelper.get(url, new RequestCallBack(builder.mContext));
-
     }
 
     /**
      * 显示数据
      */
     private <T> void showData(List<T> datas, int totalPage, int totalCount) {
-
 
         if (datas == null || datas.size() <= 0) {
             Toast.makeText(builder.mContext, "加载不到数据", Toast.LENGTH_LONG).show();
@@ -154,7 +152,6 @@ public class Pager {
         requestData();
     }
 
-
     /**
      * 构建URL
      *
@@ -165,9 +162,7 @@ public class Pager {
         return builder.mUrl + "?" + buildUrlParams();
     }
 
-
     private String buildUrlParams() {
-
 
         HashMap<String, Object> map = builder.params;
 
@@ -191,7 +186,6 @@ public class Pager {
      *
      */
     public static class Builder {
-
 
         private Context mContext;
         private Type mType;
@@ -244,21 +238,16 @@ public class Pager {
             return builder;
         }
 
-
         public Pager build(Context context, Type type) {
-
 
             this.mType = type;
             this.mContext = context;
 
             valid();
             return new Pager();
-
         }
 
-
         private void valid() {
-
 
             if (this.mContext == null)
                 throw new RuntimeException("content can't be null");
@@ -269,10 +258,7 @@ public class Pager {
             if (this.mRefreshLayout == null)
                 throw new RuntimeException("MaterialRefreshLayout can't be  null");
         }
-
-
     }
-
 
     class RequestCallBack<T> extends SpotsCallBack<Page<T>> {
 
@@ -307,7 +293,6 @@ public class Pager {
             showData(page.getList(), page.getTotalPage(), page.getTotalCount());
         }
 
-
         @Override
         public void onError(Response response, int code, Exception e) {
 
@@ -322,7 +307,6 @@ public class Pager {
         }
     }
 
-
     public interface OnPageListener<T> {
 
 
@@ -333,5 +317,4 @@ public class Pager {
         void loadMore(List<T> datas, int totalPage, int totalCount);
 
     }
-
 }

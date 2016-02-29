@@ -77,15 +77,16 @@ public class MainActivity extends AppCompatActivity {
         mTabs.add(tab_cart);
         mTabs.add(tab_mine);
 
-
         mInflater = LayoutInflater.from(this);
         mTabhost = (FragmentTabHost) this.findViewById(android.R.id.tabhost);
+
         mTabhost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 
         for (Tab tab : mTabs) {
 
             TabHost.TabSpec tabSpec = mTabhost.newTabSpec(getString(tab.getTitle()));
 
+            //设置选项卡空间
             tabSpec.setIndicator(buildIndicator(tab));
 
             mTabhost.addTab(tabSpec, tab.getFragment(), null);
@@ -96,19 +97,25 @@ public class MainActivity extends AppCompatActivity {
             public void onTabChanged(String tabId) {
 
                 if (tabId == getString(R.string.cart)) {
+
                     refData();
                 }
             }
         });
 
         mTabhost.getTabWidget().setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
+        //默认选项卡时主页
         mTabhost.setCurrentTab(0);
     }
 
 
+    /**
+     * 刷新数据
+     */
     private void refData() {
 
         if (cartFragment == null) {
+
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(getString(R.string.cart));
             if (fragment != null) {
                 cartFragment = (CartFragment) fragment;
@@ -120,13 +127,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    View view = mInflater.inflate(R.layout.tab_indicator, null);
-    ImageView img = (ImageView) view.findViewById(R.id.icon_tab);
-    TextView text = (TextView) view.findViewById(R.id.txt_indicator);
+    /**
+     * 创建选项卡
+     *
+     * @param tab
+     * @return
+     */
+    private View buildIndicator(Tab tab) {
 
-    img.setBackgroundResource(tab.getIcon());
-    text.setText(tab.getTitle());
+        //添加布局
+        View view = mInflater.inflate(R.layout.tab_indicator, null);
+        //获取控件
+        ImageView img = (ImageView) view.findViewById(R.id.icon_tab);
+        TextView text = (TextView) view.findViewById(R.id.txt_indicator);
 
-    return view;
-}
+        //设置选项卡图片
+        img.setBackgroundResource(tab.getIcon());
+        //设置选项卡文字
+        text.setText(tab.getTitle());
+
+        return view;
+    }
 }

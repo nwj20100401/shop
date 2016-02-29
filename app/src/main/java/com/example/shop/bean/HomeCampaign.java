@@ -1,24 +1,29 @@
-/*
-*CampaignRecommendEx.java
-*Created on 2015/10/4 上午12:12 by Ivan
-*Copyright(c)2014 Guangzhou Onion Information Technology Co., Ltd.
-*http://www.cniao5.com
-*/
 package com.example.shop.bean;
 
 import java.io.Serializable;
 
 /**
- * Copyright(c)2014 Guangzhou Onion Information Technology Co., Ltd.
- * http://www.cniao5.com
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：首页动态模块实体类
+ * 创建人：sony
+ * 创建时间：2016/2/26 15:23
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
 public class HomeCampaign implements Serializable {
 
-
     private Long id;
+    //模块标题
     private String title;
+    //模块1
     private Campaign cpOne;
+    //模块2
     private Campaign cpTwo;
+    //模块3
     private Campaign cpThree;
 
 

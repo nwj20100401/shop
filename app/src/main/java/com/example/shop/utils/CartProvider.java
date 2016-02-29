@@ -72,8 +72,11 @@ public class CartProvider {
     }
 
 
+    /**
+     * 将商品放到购物车中
+     * @param wares
+     */
     public void put(Wares wares) {
-
 
         ShoppingCart cart = convertData(wares);
         put(cart);

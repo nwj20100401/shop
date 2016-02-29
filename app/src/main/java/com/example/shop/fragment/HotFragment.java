@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.cjj.MaterialRefreshLayout;
+import com.example.shop.R;
 import com.example.shop.activity.Contants;
+import com.example.shop.activity.WareDetailActivity;
 import com.example.shop.adapter.BaseAdapter;
 import com.example.shop.adapter.HWAdatper;
 import com.example.shop.bean.Page;
@@ -22,11 +24,19 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 import java.util.List;
 
 
-
+/**
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：热卖fragment
+ * 创建人：sony
+ * 创建时间：2016/2/29 10:12
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
+ */
 public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wares> {
-
-
-
 
     private HWAdatper mAdatper;
 
@@ -37,10 +47,9 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wa
     private MaterialRefreshLayout mRefreshLaout;
 
 
-
     @Override
     public View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_hot,container,false);
+        return inflater.inflate(R.layout.fragment_hot, container, false);
     }
 
     @Override
@@ -52,7 +61,8 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wa
                 .setOnPageListener(this)
                 .setPageSize(20)
                 .setRefreshLayout(mRefreshLaout)
-                .build(getContext(), new TypeToken<Page<Wares>>() {}.getType());
+                .build(getContext(), new TypeToken<Page<Wares>>() {
+                }.getType());
 
 
         pager.request();
@@ -63,7 +73,7 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wa
     @Override
     public void load(List<Wares> datas, int totalPage, int totalCount) {
 
-        mAdatper = new HWAdatper(getContext(),datas);
+        mAdatper = new HWAdatper(getContext(), datas);
 
         mAdatper.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
@@ -73,7 +83,7 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wa
 
                 Intent intent = new Intent(getActivity(), WareDetailActivity.class);
 
-                intent.putExtra(Contants.WARE,wares);
+                intent.putExtra(Contants.WARE, wares);
                 startActivity(intent);
 
 
@@ -98,7 +108,7 @@ public class HotFragment extends BaseFragment implements Pager.OnPageListener<Wa
     @Override
     public void loadMore(List<Wares> datas, int totalPage, int totalCount) {
 
-       mAdatper.loadMoreData(datas);
+        mAdatper.loadMoreData(datas);
         mRecyclerView.scrollToPosition(mAdatper.getDatas().size());
     }
 }

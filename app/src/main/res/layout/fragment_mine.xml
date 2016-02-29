@@ -5,12 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--我的信息布局-->
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="?attr/colorPrimary">
 
+        <!--开源项目，头像显示-->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_head"
             android:layout_width="100dp"
@@ -19,8 +21,9 @@
             android:layout_marginTop="12dp"
             android:src="@drawable/default_head"
             app:civ_border_color="#FFFFFF"
-            app:civ_border_width="2dp"></de.hdodenhof.circleimageview.CircleImageView>
+            app:civ_border_width="2dp" />
 
+        <!--用户名-->
         <TextView
             android:id="@+id/txt_username"
             android:layout_width="wrap_content"

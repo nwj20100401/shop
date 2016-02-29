@@ -4,14 +4,24 @@ import android.content.Context;
 import android.net.Uri;
 
 
+import com.example.shop.R;
 import com.example.shop.bean.Wares;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
 
 /**
- * Created by <a href="http://www.cniao5.com">菜鸟窝</a>
- * 一个专业的Android开发在线教育平台
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：基础适配器
+ * 创建人：sony
+ * 创建时间：2016/2/29 09:49
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
 public class WaresAdapter extends SimpleAdapter<Wares> {
 

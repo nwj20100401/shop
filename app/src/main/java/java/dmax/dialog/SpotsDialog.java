@@ -7,6 +7,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.shop.R;
+
 /**
  * Created by Maxim Dybarsky | maxim.dybarskyy@gmail.com
  * on 13.01.15 at 14:22

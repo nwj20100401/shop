@@ -1,15 +1,24 @@
 package com.example.shop.bean;
 
 /**
- * Created by Ivan on 15/9/25.
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：选项卡信息实体
+ * 创建人：sony
+ * 创建时间：2016/2/29 10:09
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
  */
 public class Tab {
 
-    private  int title;
-    private  int icon;
+    private int title;
+    private int icon;
     private Class fragment;
 
-    public Tab(Class fragment,int title, int icon) {
+    public Tab(Class fragment, int title, int icon) {
         this.title = title;
         this.icon = icon;
         this.fragment = fragment;

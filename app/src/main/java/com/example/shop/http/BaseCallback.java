@@ -8,9 +8,19 @@ import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-
+/**
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：网络请求回调
+ * 创建人：sony
+ * 创建时间：2016/2/26 16:04
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
+ */
 public abstract class BaseCallback<T> {
-
 
     public Type mType;
 

@@ -20,8 +20,7 @@ import java.util.Map;
 /**
  * Created by Android Studio.
  * 项目名称：shop
- * 类描述：分页信息实体类
- * 功能描述:数据信息分页
+ * 类描述：分页商品信息实体类
  * 创建人：sony
  * 创建时间：2016/2/27 12:14
  * 修改人：
@@ -36,8 +35,11 @@ public class Pager {
 
     private OkHttpHelper httpHelper;
 
+    //正常
     private static final int STATE_NORMAL = 0;
+    //刷新
     private static final int STATE_REFREH = 1;
+    //加载更多
     private static final int STATE_MORE = 2;
 
     private int state = STATE_NORMAL;
@@ -45,6 +47,7 @@ public class Pager {
     private Pager() {
 
         httpHelper = OkHttpHelper.getInstance();
+        //初始化商品信息列表
         initRefreshLayout();
     }
 
@@ -57,7 +60,7 @@ public class Pager {
 
 
     public void request() {
-
+        //请求数据
         requestData();
     }
 
@@ -66,10 +69,15 @@ public class Pager {
     }
 
 
+    /**
+     * 初始化列表
+     */
     private void initRefreshLayout() {
 
+        //可以加载更多
         builder.mRefreshLayout.setLoadMore(builder.canLoadMore);
 
+        //下拉刷新
         builder.mRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
@@ -80,11 +88,14 @@ public class Pager {
             @Override
             public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
 
-                if (builder.pageIndex < builder.totalPage)
+                if (builder.pageIndex < builder.totalPage) {
+                    //加载更多数据
                     loadMore();
-                else {
+                } else {
                     Toast.makeText(builder.mContext, "无更多数据", Toast.LENGTH_LONG).show();
+                    //停止加载更多
                     materialRefreshLayout.finishRefreshLoadMore();
+                    //设置不能加载更多
                     materialRefreshLayout.setLoadMore(false);
                 }
             }
@@ -98,6 +109,7 @@ public class Pager {
 
         String url = buildUrl();
 
+        //网络请求
         httpHelper.get(url, new RequestCallBack(builder.mContext));
     }
 
@@ -183,7 +195,7 @@ public class Pager {
 
 
     /**
-     *
+     * 自定义分页商品信息
      */
     public static class Builder {
 
@@ -191,8 +203,10 @@ public class Pager {
         private Type mType;
         private String mUrl;
 
+        //第三方下拉刷新控件
         private MaterialRefreshLayout mRefreshLayout;
 
+        //是否加载更多
         private boolean canLoadMore;
 
 
@@ -260,6 +274,12 @@ public class Pager {
         }
     }
 
+
+    /**
+     * 网络请求回调接口
+     *
+     * @param <T>
+     */
     class RequestCallBack<T> extends SpotsCallBack<Page<T>> {
 
         public RequestCallBack(Context context) {
@@ -271,6 +291,7 @@ public class Pager {
         @Override
         public void onFailure(Request request, Exception e) {
 
+            //关闭对话框
             dismissDialog();
             Toast.makeText(builder.mContext, "请求出错：" + e.getMessage(), Toast.LENGTH_LONG).show();
 

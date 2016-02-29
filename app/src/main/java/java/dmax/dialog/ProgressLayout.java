@@ -7,6 +7,8 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
+import com.example.shop.R;
+
 /**
  * Created by Maxim Dybarsky | maxim.dybarskyy@gmail.com
  * on 13.01.15 at 17:34

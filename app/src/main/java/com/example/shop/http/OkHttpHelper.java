@@ -16,7 +16,18 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * Created by Android Studio.
+ * 项目名称：shop
+ * 类描述：网络请求工具类
+ * 创建人：sony
+ * 创建时间：2016/2/26 16:04
+ * 修改人：
+ * 修改时间：
+ * 修改备注：
+ *
+ * @version V1.0
+ */
 public class OkHttpHelper {
 
     public static final String TAG = "OkHttpHelper";
@@ -211,6 +222,4 @@ public class OkHttpHelper {
         POST,
 
     }
-
-
 }

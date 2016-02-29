@@ -43,11 +43,16 @@ public class WareListActivity extends AppCompatActivity implements Pager.OnPageL
 
     private static final String TAG = "WareListActivity";
 
+    //商品列表默认排序
     public static final int TAG_DEFAULT = 0;
+    //商品列表按销量排序
     public static final int TAG_SALE = 1;
+    //商品列表按价格排序
     public static final int TAG_PRICE = 2;
 
+    //列表模式为列表样式
     public static final int ACTION_LIST = 1;
+    //列表样式为表格样式
     public static final int ACTION_GIRD = 2;
 
 
@@ -56,7 +61,6 @@ public class WareListActivity extends AppCompatActivity implements Pager.OnPageL
 
     @ViewInject(R.id.txt_summary)
     private TextView mTxtSummary;
-
 
     @ViewInject(R.id.recycler_view)
     private RecyclerView mRecyclerview_wares;
@@ -71,32 +75,33 @@ public class WareListActivity extends AppCompatActivity implements Pager.OnPageL
     private int orderBy = 0;
     private long campaignId = 0;
 
-
     private HWAdatper mWaresAdapter;
 
-
     private Pager pager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_warelist);
+
         ViewUtils.inject(this);
 
+        //初始化搜索框
         initToolBar();
 
         campaignId = getIntent().getLongExtra(Contants.COMPAINGAIN_ID, 0);
 
+        //初始化选项卡
         initTab();
 
+        //获取数据
         getData();
-
-
     }
 
 
+    /**
+     * 初始化搜索框
+     */
     private void initToolBar() {
 
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -106,20 +111,21 @@ public class WareListActivity extends AppCompatActivity implements Pager.OnPageL
             }
         });
 
-
+        //设置右边按钮样式
         mToolbar.setRightButtonIcon(R.drawable.icon_grid_32);
+        //设置右边按钮的标签
         mToolbar.getRightButton().setTag(ACTION_LIST);
-
-
+        //添加按钮的监听事件
         mToolbar.setRightButtonOnClickListener(this);
-
-
     }
 
 
+    /**
+     * 获取数据
+     */
     private void getData() {
 
-
+        //获取商品数据信息
         pager = Pager.newBuilder().setUrl(Contants.API.WARES_CAMPAIN_LIST)
                 .putParam("campaignId", campaignId)
                 .putParam("orderBy", orderBy)
@@ -130,19 +136,16 @@ public class WareListActivity extends AppCompatActivity implements Pager.OnPageL
                 }.getType());
 
         pager.request();
-
     }
 
 
     private void initTab() {
-
 
         TabLayout.Tab tab = mTablayout.newTab();
         tab.setText("默认");
         tab.setTag(TAG_DEFAULT);
 
         mTablayout.addTab(tab);
-
 
         tab = mTablayout.newTab();
         tab.setText("价格");
@@ -247,6 +250,5 @@ public class WareListActivity extends AppCompatActivity implements Pager.OnPageL
 
             mRecyclerview_wares.setLayoutManager(new LinearLayoutManager(this));
         }
-
     }
 }

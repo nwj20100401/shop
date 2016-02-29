@@ -1,4 +1,4 @@
-package java.dmax.dialog;
+package dmax.dialog;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -6,8 +6,6 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
-
-import com.example.shop.R;
 
 /**
  * Created by Maxim Dybarsky | maxim.dybarskyy@gmail.com

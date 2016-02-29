@@ -1,1 +1,1 @@
-include ':app', ':sharesdk', ':materialrefreshlayout', ':androidimageslider'
+include ':app', ':sharesdk', ':materialrefreshlayout', ':androidimageslider', ':spotsdialog'

@@ -5,7 +5,8 @@ import android.content.Context;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
-import java.dmax.dialog.SpotsDialog;
+import dmax.dialog.SpotsDialog;
+
 
 /**
  * Created by Android Studio.

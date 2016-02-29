@@ -1,4 +1,4 @@
-package java.dmax.dialog;
+package dmax.dialog;
 
 import android.content.Context;
 import android.view.View;

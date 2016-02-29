@@ -1,4 +1,4 @@
-package java.dmax.dialog;
+package dmax.dialog;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -6,8 +6,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import com.example.shop.R;
 
 /**
  * Created by Maxim Dybarsky | maxim.dybarskyy@gmail.com

@@ -17,11 +17,11 @@ import com.example.shop.widget.CNiaoToolBar;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
-import java.dmax.dialog.SpotsDialog;
 import java.io.Serializable;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+import dmax.dialog.SpotsDialog;
 
 /**
  * Created by Android Studio.

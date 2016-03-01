@@ -126,6 +126,7 @@ public class WareDetailActivity extends AppCompatActivity implements View.OnClic
      * 分享商品信息
      */
     private void showShare() {
+
         ShareSDK.initSDK(this);
 
         OnekeyShare oks = new OnekeyShare();

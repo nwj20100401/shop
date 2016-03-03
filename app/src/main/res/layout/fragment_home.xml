@@ -8,13 +8,13 @@
 
     <!--主页线性布局，纵向全屏-->
 
-    <!--自定义的标题栏-->
+    <!--自定义的标题栏,最小高度时material默认高度-->
     <com.example.shop.widget.CNiaoToolBar
         android:id="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:minHeight="@dimen/abc_action_bar_default_height_material"
         app:isShowSearchView="true" />
 
 

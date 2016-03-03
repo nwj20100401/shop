@@ -14,8 +14,11 @@ package com.example.shop.bean;
  */
 public class Tab {
 
+    //选项卡的标题
     private int title;
+    //选项卡的标题
     private int icon;
+    //Fragment
     private Class fragment;
 
     public Tab(Class fragment, int title, int icon) {

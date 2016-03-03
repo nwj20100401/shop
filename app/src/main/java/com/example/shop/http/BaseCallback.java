@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 /**
  * Created by Android Studio.
  * 项目名称：shop
- * 类描述：网络请求回调
+ * 类描述：网络请求回调抽象类,获取gson规范的父类类型参数
  * 创建人：sony
  * 创建时间：2016/2/26 16:04
  * 修改人：
@@ -22,13 +22,16 @@ import java.lang.reflect.Type;
  */
 public abstract class BaseCallback<T> {
 
+	//父类类型
     public Type mType;
 
     static Type getSuperclassTypeParameter(Class<?> subclass) {
+		//获取泛型类型数组
         Type superclass = subclass.getGenericSuperclass();
         if (superclass instanceof Class) {
             throw new RuntimeException("Missing type parameter.");
         }
+		//将泛型类型转为参数化的类型
         ParameterizedType parameterized = (ParameterizedType) superclass;
         return $Gson$Types.canonicalize(parameterized.getActualTypeArguments()[0]);
     }
@@ -38,15 +41,21 @@ public abstract class BaseCallback<T> {
         mType = getSuperclassTypeParameter(getClass());
     }
 
-
+    /**
+     * 请求之前时调用此方法
+     * @param request
+     */
     public abstract void onBeforeRequest(Request request);
 
-
+    /**
+     * 请求失败时调用此方法
+     * @param request
+     * @param e
+     */
     public abstract void onFailure(Request request, Exception e);
 
-
     /**
-     * 请求成功时调用此方法
+     * 请求成功时获取响应调用此方法
      *
      * @param response
      */

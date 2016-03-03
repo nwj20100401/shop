@@ -2,6 +2,7 @@ package com.example.shop.widget;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v7.widget.TintTypedArray;
@@ -35,6 +36,8 @@ public class CNiaoToolBar extends Toolbar {
     //定义添加布局
     private LayoutInflater mInflater;
 
+    private Context context;
+
     //定义视图
     private View mView;
     //定义textView 未点击之前的提示信息
@@ -50,7 +53,8 @@ public class CNiaoToolBar extends Toolbar {
      * @param context
      */
     public CNiaoToolBar(Context context) {
-        this(context, null);
+        super(context, null);
+        this.context = context;
     }
 
     /**
@@ -60,7 +64,11 @@ public class CNiaoToolBar extends Toolbar {
      * @param attrs
      */
     public CNiaoToolBar(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
+        super(context, attrs);
+        this.context = context;
+
+        //设置自定义属性
+        setCustomStyle(attrs);
     }
 
     /**
@@ -78,11 +86,20 @@ public class CNiaoToolBar extends Toolbar {
         //设置内容的相对位置
         setContentInsetsRelative(10, 10);
 
-        if (attrs != null) {
-            final TintTypedArray a = TintTypedArray.obtainStyledAttributes(getContext(), attrs,
-                    R.styleable.CNiaoToolBar, defStyleAttr, 0);
+        //设置自定义属性
+        setCustomStyle(attrs);
+    }
 
-            final Drawable rightIcon = a.getDrawable(R.styleable.CNiaoToolBar_rightButtonIcon);
+    /**
+     * 设置自定义属性
+     *
+     * @param attrs
+     */
+    private void setCustomStyle(AttributeSet attrs) {
+        if (attrs != null) {
+            TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CNiaoToolBar);
+
+            Drawable rightIcon = array.getDrawable(R.styleable.CNiaoToolBar_rightButtonIcon);
             if (rightIcon != null) {
 
                 //setNavigationIcon(navIcon);
@@ -91,7 +108,7 @@ public class CNiaoToolBar extends Toolbar {
             }
 
             //是否显示搜索视图，默认否
-            boolean isShowSearchView = a.getBoolean(R.styleable.CNiaoToolBar_isShowSearchView, false);
+            boolean isShowSearchView = array.getBoolean(R.styleable.CNiaoToolBar_isShowSearchView, false);
 
             if (isShowSearchView) {
                 //显示搜索视图
@@ -100,16 +117,14 @@ public class CNiaoToolBar extends Toolbar {
                 hideTitleView();
             }
 
-
             //获取右边按钮的文本
-            CharSequence rightButtonText = a.getText(R.styleable.CNiaoToolBar_rightButtonText);
+            CharSequence rightButtonText = array.getText(R.styleable.CNiaoToolBar_rightButtonText);
             if (rightButtonText != null) {
                 //设置按钮文本
                 setRightButtonText(rightButtonText);
             }
-
             //回收字符串
-            a.recycle();
+            array.recycle();
         }
     }
 
@@ -160,7 +175,7 @@ public class CNiaoToolBar extends Toolbar {
     }
 
     /**
-     * 通过id获取资源，设置按钮图标
+     * 设置按钮图标
      *
      * @param icon
      */

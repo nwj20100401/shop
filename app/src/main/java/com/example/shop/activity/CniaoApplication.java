@@ -18,10 +18,16 @@ import com.facebook.drawee.backends.pipeline.Fresco;
  */
 public class CniaoApplication extends Application {
 
+    private static CniaoApplication instance;
+
     @Override
     public void onCreate() {
         super.onCreate();
 //        初始化fresco图片加载工具
         Fresco.initialize(this);
+    }
+
+    public static CniaoApplication getInstance(){
+        return instance;
     }
 }

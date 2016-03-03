@@ -37,10 +37,12 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     // 添加布局
     private LayoutInflater mInflater;
-    // 定义fragmentTabhost对象
+    // 自定义fragmentTabhost对象
     private FragmentTabHost mTabhost;
 
+    //购物车界面
     private CartFragment cartFragment;
+
     // 底部选项卡为5个
     private List<Tab> mTabs = new ArrayList<>(5);
 
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void initTab() {
 
+        //新建tab
         Tab tab_home = new Tab(HomeFragment.class, R.string.home, R.drawable.selector_icon_home);
         Tab tab_hot = new Tab(HotFragment.class, R.string.hot, R.drawable.selector_icon_hot);
         Tab tab_category = new Tab(CategoryFragment.class, R.string.catagory, R.drawable.selector_icon_category);
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         mTabs.add(tab_mine);
 
         mInflater = LayoutInflater.from(this);
+        //找到界面中自定义的FragmentTabHost
         mTabhost = (FragmentTabHost) this.findViewById(android.R.id.tabhost);
 
         mTabhost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
@@ -86,9 +90,12 @@ public class MainActivity extends AppCompatActivity {
 
             TabHost.TabSpec tabSpec = mTabhost.newTabSpec(getString(tab.getTitle()));
 
+            //创建tab的界面
+            View view = buildIndicator(tab);
             //设置选项卡空间
-            tabSpec.setIndicator(buildIndicator(tab));
+            tabSpec.setIndicator(view);
 
+            //将创建出的tab添加到tabhost中
             mTabhost.addTab(tabSpec, tab.getFragment(), null);
         }
 
@@ -98,11 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
                 if (tabId == getString(R.string.cart)) {
 
-                    refData();
+                    // refData();
                 }
             }
         });
 
+        //去掉tab之间的分隔线
         mTabhost.getTabWidget().setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
         //默认选项卡时主页
         mTabhost.setCurrentTab(0);

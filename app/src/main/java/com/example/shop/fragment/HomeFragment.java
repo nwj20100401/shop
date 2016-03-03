@@ -13,6 +13,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.shop.R;
+import com.example.shop.activity.CniaoApplication;
 import com.example.shop.activity.Contants;
 import com.example.shop.activity.WareListActivity;
 import com.example.shop.adapter.HomeCatgoryAdapter;
@@ -23,6 +24,7 @@ import com.example.shop.bean.HomeCampaign;
 import com.example.shop.http.BaseCallback;
 import com.example.shop.http.OkHttpHelper;
 import com.example.shop.http.SpotsCallBack;
+import com.example.shop.utils.ToastUtils;
 import com.google.gson.Gson;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.squareup.okhttp.Request;
@@ -84,8 +86,10 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void init() {
 
+        //获取图片
         requestImages();
 
+        //初始化首页列表
         initRecyclerView();
     }
 
@@ -95,7 +99,7 @@ public class HomeFragment extends BaseFragment {
      */
     private void requestImages() {
 
-        String url = "http://112.124.22.238:8081/course_api/banner/query?type=1";
+        String url = "http://image.woshipm.com/wp-files/2015/08/2013060309105828.jpg";
 
         //网络请求
         httpHelper.get(url, new SpotsCallBack<List<Banner>>(getContext()) {
@@ -110,7 +114,7 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void onError(Response response, int code, Exception e) {
-
+                ToastUtils.show(getContext(), "请求出现错误");
             }
         });
     }
